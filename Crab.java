@@ -51,6 +51,13 @@ public class Crab extends Actor
         {
             removeTouching(worm.class);
             Greenfoot.playSound("slurp.wav");
+            System.out.println("Number of worms: " + getWorld().getObjects(worm.class).size());
+            if(getWorld().getObjects(worm.class).size() == 0)
+            {
+                Greenfoot.setWorld(new WinSplash());
+                Greenfoot.playSound("fanfare.wav");
+                Greenfoot.stop();
+            }
         }
         if(isTouching(Lobster.class))
         {
