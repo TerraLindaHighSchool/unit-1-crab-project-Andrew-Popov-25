@@ -20,8 +20,10 @@ public class GymWorld extends World
     private void prepare()
     {
         Ground ground = new Ground();
-        addObject(ground,450,590);
+        addObject(ground,450,605);
         RedBall redBall = new RedBall();
         addObject(redBall,150,309);
+        Child child = new Child();
+        addObject(child,5,580);
     }
 }

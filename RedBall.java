@@ -9,8 +9,8 @@ import java.math.*;
  */
 public class RedBall extends Actor
 {
-    int acceleration = 2;
-    float vSpeed = 10;
+    float acceleration = 1.5f;
+    float vSpeed = 2;
     int speed = 15;
     int jumpStrenght = 40;
     float bounces = 1.0f;
@@ -23,6 +23,7 @@ public class RedBall extends Actor
         Fall();
         checkKeys();
         checkFall();
+        checkChild();
     }
     public boolean onGround()
     {
@@ -39,7 +40,7 @@ public class RedBall extends Actor
     }
     public void Bounce()
     {
-        vSpeed = -40/bounces;
+        vSpeed = -30/bounces;
         setLocation (getX(), getY() + 50);
         Fall();
         bounces = bounces + 0.2f;
@@ -82,5 +83,18 @@ public class RedBall extends Actor
       public void moveRight()
     {
       setLocation(getX() + speed, getY());  
+    }
+    public void checkChild()
+    {
+        if(isTouching(Child.class))
+        {
+            if(isTouching(Ground.class))
+            {
+                Greenfoot.stop();
+            } else {
+                removeTouching(Child.class);
+                Child.SpawnRand();
+            }
+        }
     }
 }
