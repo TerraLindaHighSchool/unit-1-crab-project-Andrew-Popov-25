@@ -5,7 +5,7 @@ import java.math.*;
  * The main actor: RedBall
  * 
  * @Andrew Popov
- * @09/09 03:13pm
+ * @09/09/21 03:13pm
  */
 public class RedBall extends Actor
 {
@@ -27,6 +27,8 @@ public class RedBall extends Actor
         checkFall();
         checkChild();
     }
+    
+    //Checks if the ball is coliding with the ground
     public boolean onGround()
     {
         if(isTouching(Ground.class)){
@@ -35,11 +37,15 @@ public class RedBall extends Actor
             return false;
         } 
     }
+    
+    //Constantly running to simulate gravity, moved the ball down
     public void Fall()
     {
      setLocation (getX(), getY() + Math.round(vSpeed));
      vSpeed = vSpeed += acceleration;
     }
+    
+    //Rebounds the ball by temporarily inverting gravety (vSpeed)
     public void Bounce()
     {
         vSpeed = -30/bounces;
@@ -47,6 +53,8 @@ public class RedBall extends Actor
         Fall();
         bounces = bounces + 0.2f;
     }
+    
+    //Checks if the ball is touching the ground, falls if not
     public void checkFall()
     {
         if (onGround())
@@ -56,6 +64,8 @@ public class RedBall extends Actor
             Fall();
         }
     }
+    
+    //Checking keys for movement
     public void checkKeys()
     {
         if (Greenfoot.isKeyDown("left")  && onGround() == false)
@@ -71,6 +81,8 @@ public class RedBall extends Actor
           jump(); 
         }
     }
+    
+    //Moves up, same mechanic as bouncing.
     public void jump()
     {
         bounces = 1;
@@ -78,14 +90,20 @@ public class RedBall extends Actor
         vSpeed = -jumpStrenght;
         Fall();
     }
+    
+    //Moves to the left
     public void moveLeft()
     {
           setLocation(getX() - speed, getY());  
     }
+    
+    //Moves to the right
       public void moveRight()
     {
       setLocation(getX() + speed, getY());  
     }
+    
+    //Checks if touching child: for killing and for game end
     public void checkChild()
     {
         if(isTouching(Child.class))

@@ -3,17 +3,17 @@ import java.math.*;
 import java.util.*;
 
 /**
- * Write a description of class Child here.
+ * Runs around and tries to steal the ball
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Andrew Popov
+ * @09/15/21
  */
 public class Child extends Actor
 {
     boolean spawnRightSide = true;
     World world = getWorld();
     
-    
+    //Setting the world: this is done because greenfoot doesn't like me
     public void setWorld(World world) {
         this.world = world;
     }
@@ -25,6 +25,8 @@ public class Child extends Actor
     {
         WalkToBall();
     }
+    
+    //Moves in the direction of the ball
     public void WalkToBall()
     {
         List players = getWorld().getObjects(RedBall.class);
@@ -36,6 +38,8 @@ public class Child extends Actor
             setLocation(getX() - 5, getY());
         }
     }
+    
+    //Chooses a side to respawn on
     public void SpawnRand()
     {
         spawnRightSide = (Math.random() < 0.5);

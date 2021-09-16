@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Ground here.
+ * Exists as a secondary layer for collision detection.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @Andrew Popov
+ * @09/15/21
  */
 public class Ground extends Actor
 {
@@ -14,6 +14,6 @@ public class Ground extends Actor
      */
     public void act()
     {
-        // Add your action code here.
+        //Does Nothing
     }
 }
