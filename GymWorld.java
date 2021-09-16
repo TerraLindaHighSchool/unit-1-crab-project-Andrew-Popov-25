@@ -25,5 +25,7 @@ public class GymWorld extends World
         addObject(redBall,150,309);
         Child child = new Child();
         addObject(child,5,580);
+        Child child2 = new Child();
+        addObject(child2,890,581);
     }
 }

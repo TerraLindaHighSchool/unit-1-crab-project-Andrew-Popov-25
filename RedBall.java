@@ -12,8 +12,10 @@ public class RedBall extends Actor
     float acceleration = 1.5f;
     float vSpeed = 2;
     int speed = 15;
-    int jumpStrenght = 40;
+    int jumpStrenght = 20;
     float bounces = 1.0f;
+    private Child child = new Child();
+    
     /**
      * Act - do whatever the RedBall wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -90,10 +92,15 @@ public class RedBall extends Actor
         {
             if(isTouching(Ground.class))
             {
+                removeTouching(Child.class);
                 Greenfoot.stop();
+                WinSplash loss = new WinSplash();
+                Greenfoot.setWorld(loss);
             } else {
                 removeTouching(Child.class);
-                Child.SpawnRand();
+                child = new Child();
+                child.setWorld(getWorld());
+                child.SpawnRand();
             }
         }
     }
